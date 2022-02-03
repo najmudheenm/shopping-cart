@@ -8,7 +8,6 @@ const CollectionPreview = ({ title, items }) => {
       <div className="preview">
         {items
           .filter((item, inx) => {
-            console.log("filter");
             return inx < 4;
           })
           .map(({ id, ...otherItemProps }) => {

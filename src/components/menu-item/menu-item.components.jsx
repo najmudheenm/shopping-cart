@@ -1,7 +1,6 @@
 import "./menu-item.styles.scss";
 
 const MenuItem = ({ title, imageUrl, size }) => {
-  console.log(imageUrl);
   return (
     <div className={`${size} menu-item`}>
       <div

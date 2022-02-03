@@ -13,8 +13,8 @@ export class Shop extends Component {
       collections: SHOP_DATA,
     };
   }
+
   render() {
-    console.log(this.state);
     const { collections } = this.state;
     return (
       <div className="shop-page">
