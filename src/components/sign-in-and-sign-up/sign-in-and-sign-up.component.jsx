@@ -16,12 +16,12 @@ export default class SignIn extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
     this.setState({ email: "", password: "" });
   };
   changeHandler = (event) => {
     const { value, name } = event.target;
     this.setState({ [name]: value });
-    console.log(this.state);
   };
   render() {
     return (
@@ -48,13 +48,8 @@ export default class SignIn extends Component {
             onChange={this.changeHandler}
           />
           <div className="buttons">
-            <CustomButton className="custom-button" type="submit">
-              Sign In
-            </CustomButton>
-            <CustomButton
-              className="google-sign-in custom-button"
-              onClick={signInWithGoogle}
-            >
+            <CustomButton type="submit">Sign In</CustomButton>
+            <CustomButton className="google-sign-in" onClick={signInWithGoogle}>
               sign in with Google
             </CustomButton>
           </div>
