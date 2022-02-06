@@ -1,4 +1,4 @@
-BULDING A COMPLETE SHOPING CART 
+BUILDING A COMPLETE SHOPING CART 
 ................................
 
 
