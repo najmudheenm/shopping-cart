@@ -6,18 +6,24 @@ import React, { Component } from "react";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
-import { signInWithGoogle } from "../../firebase/firebase.util";
+import { signInWithGoogle, signInUser } from "../../firebase/firebase.util";
 
 export default class SignIn extends Component {
   state = {
     email: "",
     password: "",
+    error: "",
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-
-    this.setState({ email: "", password: "" });
+    try {
+      const result = await signInUser(this.state.email, this.state.password);
+      console.log(result);
+      this.setState({ email: "", password: "" });
+    } catch (err) {
+      this.setState({ error: err.message });
+    }
   };
   changeHandler = (event) => {
     const { value, name } = event.target;
@@ -28,6 +34,9 @@ export default class SignIn extends Component {
       <div className="sign-in">
         <h2>I already have an account</h2>
         <span>Sign in with your email and password</span>
+        {this.state.error && (
+          <span style={{ color: "red" }}>{this.state.error}</span>
+        )}
         <form onSubmit={this.handleSubmit}>
           <FormInput
             name="email"
