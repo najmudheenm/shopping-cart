@@ -11,12 +11,12 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDaYXU8jOn4E_VS3G0KGCiITCuSBxBRfJk",
-  authDomain: "ecommerce-f5e5f.firebaseapp.com",
-  projectId: "ecommerce-f5e5f",
-  storageBucket: "ecommerce-f5e5f.appspot.com",
-  messagingSenderId: "645009235619",
-  appId: "1:645009235619:web:1e729a8f632ca434b42916",
+  apiKey:`${ process.env.REACT_APP_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`,
+  projectId: `${process.env.REACT_APP_PROJECT_ID}`,
+  storageBucket: `${process.env.REACT_APP_STORAGE_BUCKET}`,
+  messagingSenderId:`${ process.env.REACT_APP_MESSAGING_SENDER_ID}`,
+  appId: `${process.env.REACT_APP_APP_ID}`,
 };
 
 //create user database in firestore
