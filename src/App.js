@@ -1,6 +1,6 @@
-import { Component } from "react";
+import { Component ,} from "react";
 import "./app.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes,Navigate } from "react-router-dom";
 
 //import pages
 import ShopPage from "./pages/shop/shop.components";
@@ -12,6 +12,8 @@ import Header from "./components/header/header.component";
 
 //firebase
 import { auth, createUserProfileDocument } from "./firebase/firebase.util";
+
+//redux state
 import { connect } from "react-redux";
 import {setCurrentUser}from './redux/user/user.actions'
 
@@ -50,7 +52,7 @@ class App extends Component {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
-          <Route path="/signin" element={<SignInAndSignUpPage />} />
+          <Route path="/signin" element={this.props.currentUser? <Navigate to="/" /> : <SignInAndSignUpPage />}/>
           <Route path="*" element={<h1>nothing to fetch data</h1>} />
         </Routes>
       </div>
@@ -62,5 +64,7 @@ const mapDispatchToProps=(dispatch)=>({
   setCurrentUser:user=>dispatch(setCurrentUser(user))
 });
 
-
-export default connect(null,mapDispatchToProps) (App);
+const mapStateToProps=({user})=>({
+  currentUser:user.currentUser
+})
+export default connect(mapStateToProps, mapDispatchToProps) (App);
