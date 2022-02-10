@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import "./shopping-bag.styles.scss";
 
 //component importing
@@ -7,17 +8,23 @@ import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
 import { useDispatch } from "react-redux";
 import { toggleCartHidden } from "../../redux/cart/cart.action";
 
-import CartDropdown from "../cart-dropdown/cart-dropdown.components";
 const CartIcon = () => {
   const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const countItem = cartItems.reduce(
+    (acc, cartItem) => acc + cartItem.quantity,
+    0
+  );
+
   //togle cart menu
   const toggleCartDropdown = () => {
     dispatch(toggleCartHidden());
   };
+
   return (
     <div className="cart-icon">
       <ShoppingIcon onClick={toggleCartDropdown} className="shopping-icon" />
-      <span className="item-count">0</span>
+      <span className="item-count">{countItem}</span>
     </div>
   );
 };
