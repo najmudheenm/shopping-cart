@@ -16,6 +16,7 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 //redux state
 import { connect } from "react-redux";
 import {setCurrentUser}from './redux/user/user.actions'
+import CheckoutPage from "./pages/checkout/checkout.component";
 
 class App extends Component {
 
@@ -53,6 +54,7 @@ class App extends Component {
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/signin" element={this.props.currentUser? <Navigate to="/" /> : <SignInAndSignUpPage />}/>
+          <Route path="/checkout" element={<CheckoutPage/>}/>
           <Route path="*" element={<h1>nothing to fetch data</h1>} />
         </Routes>
       </div>
