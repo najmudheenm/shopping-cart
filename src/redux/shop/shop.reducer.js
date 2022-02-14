@@ -1,6 +1,4 @@
-/* Used as starting data for ShopPage */
-
-const SHOP_DATA = [
+const INITIAL_STATE= [
     {
       id: 1,
       title: 'Hats',
@@ -281,7 +279,13 @@ const SHOP_DATA = [
         }
       ]
     }
-  ];
+  ]
   
-  export default SHOP_DATA;
-  
+  const shopReducer=(state= INITIAL_STATE, action)=>{
+      switch(action.type) {
+          default:
+              return state
+      }
+  }
+
+  export default shopReducer

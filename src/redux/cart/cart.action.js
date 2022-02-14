@@ -9,6 +9,11 @@ export const addCartItem=(item)=>({
     payload: item
 })
 
+export const clearCartItem=(item)=>({
+    type:CartItemTypes.CLEAR_ITEM,
+    payload: item
+})
+
 export const removeCartItem=(item)=>({
     type:CartItemTypes.REMOVE_ITEM,
     payload: item

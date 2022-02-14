@@ -20,10 +20,12 @@ import CheckoutPage from "./pages/checkout/checkout.component";
 
 class App extends Component {
 
+  
+
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const {setCurrentUser} = this.props;
+    const {setCurrentUser,currentUser} = this.props;
     console.log(process.env.REACT_APP_API_KEY);
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -37,7 +39,7 @@ class App extends Component {
         setCurrentUser("");
         
       }
-        
+      
     });
   }
   
@@ -53,7 +55,7 @@ class App extends Component {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
-          <Route path="/signin" element={this.props.currentUser? <Navigate to="/" /> : <SignInAndSignUpPage />}/>
+          <Route path="/signin" element={ <SignInAndSignUpPage />}/>
           <Route path="/checkout" element={<CheckoutPage/>}/>
           <Route path="*" element={<h1>nothing to fetch data</h1>} />
         </Routes>
