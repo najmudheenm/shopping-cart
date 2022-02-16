@@ -1,11 +1,12 @@
 import { Component ,} from "react";
 import "./app.css";
-import { Route, Routes,Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 //import pages
 import ShopPage from "./pages/shop/shop.components";
 import SignInAndSignUpPage from "./pages/sign-in-signup/sign-in-and-sign-up";
 import HomePage from "./pages/homepage/Homepage.components";
+import Collection from "./pages/collection/collection.component"
 
 //import components
 import Header from "./components/header/header.component";
@@ -55,7 +56,8 @@ class App extends Component {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage />} />
-          <Route path="/signin" element={ <SignInAndSignUpPage />}/>
+          <Route path="/collection/:id" element={<Collection />} />
+          <Route path="/signin" element={ <SignInAndSignUpPage currentUser={this.currentUser} /> } />
           <Route path="/checkout" element={<CheckoutPage/>}/>
           <Route path="*" element={<h1>nothing to fetch data</h1>} />
         </Routes>
